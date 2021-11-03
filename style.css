@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+button  {
+    background-color: rgb(105, 168, 165);
+    padding: 11px;
+    border-radius: 3px;
+    border: none;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+}
+
+input {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: rgb(252, 220, 225);
+    margin-right: 15px;
+}
+
+.block {
+    margin-top: 40px;
+    border: 1px solid lightslategrey;
+    border-radius: 2px;
+    background-color: lightsteelblue;
+    padding: 30px;
+    padding-bottom: 50px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+#sum {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#content-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense-container {
+    display: flex;
+    align-items: center;
+    background-color: lightsteelblue;
+    padding: 5px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text-grey {
+    margin: 0;
+    font-size: small;
+    color: rgb(83, 83, 83);
+    margin-bottom: 2px;
+}
+
+img {
+    width: 12px;
+    margin-left: 10px;
+}
+
+.containerForCount {
+    display: flex;
+    width: 10%;
+}
+
+.containerForImg {
+    width: 10%;
+}
+
+.store {
+    width: 50%;
+}
