@@ -4,12 +4,12 @@ let valueInputCount = '';
 let inputWhere = null;
 let inputCount = null;
 let editInd = null;
+const baseUrl = 'http://localhost:8000/';
 
 const onClickButton = async () => {
     let date = new Date;
-    date = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
     if (valueInputWhere && valueInputCount) {
-        const response = await fetch('http://localhost:8000/saveExpense', {
+        const response = await fetch(`${baseUrl}saveExpense`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -36,7 +36,7 @@ window.onload = async function init() {
     inputCount = document.getElementById('add-howMuch');
     inputWhere.addEventListener('change', (e) => valueInputWhere = e.target.value);
     inputCount.addEventListener('change', (e) => valueInputCount = e.target.value);
-    const response = await fetch('http://localhost:8000/AllExpenses', {
+    const response = await fetch(`${baseUrl}allExpenses`, {
         method: 'GET'
     });
     let result = await response.json();
@@ -84,7 +84,9 @@ const render = () => {
             container.appendChild(imageDone);
         } else {
             const text = document.createElement('p');
-            text.innerText = `${index+1}) ${item.store} ${item.date}`;
+            let date = new Date(item.date);
+            date = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+            text.innerText = `${index+1}) ${item.store} ${date}`;
             text.className = 'store';
             container.appendChild(text);
 
@@ -122,7 +124,7 @@ const onEditItem = (index) => {
 
 const onDeleteItem = async (index) => {
     const response = await fetch(
-        `http://localhost:8000/removeExpense?id=${allExpenses[index]._id}`, 
+        `${baseUrl}removeExpense?id=${allExpenses[index]._id}`, 
         {
             method: 'DELETE',
             headers: {
@@ -137,9 +139,9 @@ const onDeleteItem = async (index) => {
 };
 
 const onDoneItem = async (text1, text2, index) => {
-    //if (valueInputWhere && valueInputCount) {
+   // if (valueInputWhere && valueInputCount) {
         editInd = null;
-        const response = await fetch('http://localhost:8000/changeExpense', {
+        const response = await fetch(`${baseUrl}changeExpense`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json;charset=utf-8',
@@ -154,5 +156,5 @@ const onDoneItem = async (text1, text2, index) => {
         let result = await response.json();
         allExpenses = result.data;
         render();
-   // }
+    //}
 };
